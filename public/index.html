@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Predictor System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>College Predictor</h1>
+            <p>Find your dream college based on your rank</p>
+        </header>
+
+        <main>
+            <form id="predictionForm">
+                <div class="form-group">
+                    <label for="rank">EAMCET Rank</label>
+                    <input type="number" id="rank" name="rank" placeholder="Enter your rank" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="OC">OC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="BCA">BC-A</option>
+                        <option value="BCB">BC-B</option>
+                        <option value="BCC">BC-C</option>
+                        <option value="BCD">BC-D</option>
+                        <option value="BCE">BC-E</option>
+                        <option value="OC_EWS">OC EWS</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="branch">Preferred Branch</label>
+                    <select id="branch" name="branch">
+                        <option value="ALL">All Branches</option>
+                        <option value="CSE">CSE</option>
+                        <option value="CSM">CSM</option>
+                        <option value="CSD">CSD</option>
+                        <option value="AIML">AIML</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="MECH">MECH</option>
+                        <option value="CIV">CIV</option>
+                        <option value="CSB">CSB</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="predictBtn">Predict Colleges</button>
+            </form>
+
+            <div id="results" class="results-container hidden">
+                <h2>Predicted Colleges</h2>
+                <div class="table-wrapper">
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>College Name</th>
+                                <th>Branch</th>
+                                <th>Fees</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Results will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing database...</p>
+            </div>
+
+            <div id="noData" class="hidden">
+                <p>No colleges found for the given criteria. Try adjusting your filters.</p>
+            </div>
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
