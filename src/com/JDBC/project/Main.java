@@ -17,7 +17,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Main {
-    private static final int PORT = 8000;
+private static final int PORT =
+        Integer.parseInt(System.getenv().getOrDefault("PORT", "8000"));
     private static final CollegePredictorService service = new CollegePredictorService();
 
     public static void main(String[] args) throws IOException {
@@ -41,8 +42,7 @@ public class Main {
             if (uri.equals("/")) {
                 uri = "/index.html";
             }
-
-            File file = new File("d:/edu/coders/my_projects/College_predictor_web/public" + uri);
+            File file = new File("public" + uri);
             if (!file.exists()) {
                 String response = "404 (Not Found)\n";
                 t.sendResponseHeaders(404, response.length());
@@ -139,3 +139,4 @@ public class Main {
         }
     }
 }
+
