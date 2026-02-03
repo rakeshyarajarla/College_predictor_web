@@ -21,7 +21,7 @@ public class CollegePredictorService {
         StringBuilder sql = new StringBuilder(
                 "SELECT id, INSTCODE, COLLEGENAME, branch_code, COLLFEES " +
                         "FROM " + table +
-                        " WHERE " + categoryCode + " <= ? ");
+                        " WHERE " + categoryCode + " >= ? ");
 
         if (!branchCode.equalsIgnoreCase("ALL")) {
             sql.append(" AND branch_code = ? ");
@@ -58,3 +58,4 @@ public class CollegePredictorService {
         return colleges;
     }
 }
+
