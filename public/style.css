@@ -185,4 +185,20 @@ tr:hover {
     background: #f8dbdb;
     color: #c0392b;
     border-radius: 8px;
+
+}
+.header {
+    position: relative;
+}
+
+.developer-name {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.developer-name strong {
+    color: var(--secondary-color);
 }
