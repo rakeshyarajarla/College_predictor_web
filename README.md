@@ -55,3 +55,6 @@ This project is built completely from scratch, demonstrating a deep understandin
 
 ## ☁️ Deployment
 See the **`deployment_guide.md`** file for instructions on how to deploy this project to the cloud (Render, Railway, etc.) using Docker.
+
+This the link:
+https://collegepredictorweb-production.up.railway.app/
