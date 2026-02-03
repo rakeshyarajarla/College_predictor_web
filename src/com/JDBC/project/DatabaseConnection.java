@@ -5,32 +5,31 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String DEFAULT_URL = "jdbc:mysql://127.0.0.1:3306/college_program";
-    private static final String DEFAULT_USERNAME = "root";
-    private static final String DEFAULT_PASSWORD = "mysql";
 
     static {
         try {
-            // Load MySQL JDBC Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to load MySQL Driver");
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
         }
     }
 
     public static Connection getConnection() throws SQLException {
-        String url = System.getenv("DB_URL");
-        String username = System.getenv("DB_USER");
-        String password = System.getenv("DB_PASSWORD");
 
-        if (url == null || url.isEmpty())
-            url = DEFAULT_URL;
-        if (username == null || username.isEmpty())
-            username = DEFAULT_USERNAME;
-        if (password == null || password.isEmpty())
-            password = DEFAULT_PASSWORD;
+        String host = System.getenv("MYSQLHOST");
+        String port = System.getenv("MYSQLPORT");
+        String database = System.getenv("MYSQLDATABASE");
+        String user = System.getenv("MYSQLUSER");
+        String password = System.getenv("MYSQLPASSWORD");
 
-        return DriverManager.getConnection(url, username, password);
+        if (host == null || port == null || database == null ||
+            user == null || password == null) {
+            throw new RuntimeException("MySQL environment variables not set properly");
+        }
+
+        String url = "jdbc:mysql://" + host + ":" + port + "/" + database
+                + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
+        return DriverManager.getConnection(url, user, password);
     }
 }
