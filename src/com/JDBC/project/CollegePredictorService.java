@@ -50,12 +50,13 @@ public class CollegePredictorService {
                 }
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // In a real app, might want to throw a custom exception or return empty list
-            // with error logged
-        }
+        }catch (SQLException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+}
+
         return colleges;
     }
 }
+
 
